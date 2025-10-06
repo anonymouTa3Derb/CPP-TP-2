@@ -50,7 +50,7 @@ public:
     // Contrat :
     //
 
-    /*virtual Trajet* Clone ( ) const = 0;
+    virtual Trajet* Clone ( ) const = 0;
     // Mode d'emploi :
     //
     // Contrat :

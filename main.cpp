@@ -1,6 +1,7 @@
 //
 // Created by jadam on 06/10/2025.
 //
+#include <stdio.h>
 
 int main(){
     printf("Hello World\n");

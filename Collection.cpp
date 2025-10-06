@@ -163,8 +163,8 @@ bool Collection::compare ( const Trajet* t1, const Trajet* t2 ) const
 // Algorithme :
 // Comparaison par ordre alphabérique des villes de départ puis d'arrivée
 {
-    int cmpDep = strcmp(t1->GetDepart(), t2->GetDepart());
-    int cmpArr = strcmp(t1->GetArrivee(), t2->GetArrivee());
+    int cmpDep = strcmp(t1->RecupDepart(), t2->RecupDepart());
+    int cmpArr = strcmp(t1->RecupArrivee(), t2->RecupArrivee());
     return cmpDep < 0 || (cmpDep == 0 && cmpArr < 0);
 } // ----- Fin de compare
 
