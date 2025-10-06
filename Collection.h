@@ -7,13 +7,13 @@ Xxx  -  description
 *************************************************************************/
 
 //---- Interface de la classe <Collection> (fichier Collection.h) ----
-#if ! defined ( LISTE_CHAINEE_H )
-#define LISTE_CHAINEE_H
+#if ! defined ( COLLECTION_H )
+#define COLLECTION_H
 
 //------------------------------------------------------------------ Types
 class Trajet;
 
-// Cellule de la Collection
+//------------------------------------------------------------------ Cellule de la Collection
 struct Cellule {
     Trajet *trajet;        // Pointeur sur le Trajet associé à la Cellule
     Cellule *suivante;     // Chainage simple sur la cellule suivante
@@ -49,7 +49,7 @@ class Collection
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void AjouterElement ( const Trajet* t );
+    void AjouterElement ( const Trajet* unTrajet );
     // Mode d'emploi :
     // Ajoute le Trajet pointé par t à la liste de trajets, en faisant une
     // copie en profondeur du trajet à ajouter
@@ -87,6 +87,7 @@ public:
     // Rien
 
 //------------------------------------------------- Surcharge d'opérateurs
+    Collection& operator=(const Collection& uneCollection);
 
 //-------------------------------------------- Constructeurs - destructeur
     Collection ( const Collection & uneCollection );
@@ -126,5 +127,5 @@ protected:
     unsigned int longueur;
 };
 
-#endif // LISTE_CHAINEE_H
+#endif // COLLECTION_H
 

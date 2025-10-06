@@ -17,12 +17,8 @@ FLAGS = -Wall -Wextra -std=c++11 -g
 
 # Listez tous vos fichiers .cpp (ADAPTEZ ICI!)
 FICHIERS = main.cpp \
-           Classe1.cpp \
-           Classe2.cpp \
-           Classe3.cpp \
-           Classe4.cpp \
-           Classe5.cpp
-
+           Collection.cpp \
+           Trajet.cpp 
 # Les fichiers .o (générés automatiquement)
 OBJETS = $(FICHIERS:.cpp=.o)
 
@@ -35,12 +31,12 @@ all: $(EXEC)
 
 # Créer l'exécutable
 $(EXEC): $(OBJETS)
-    $(CXX) $(OBJETS) -o $(EXEC)
-    @echo "✓ Compilation terminée!"
+	$(CXX) $(OBJETS) -o $(EXEC)
+	@echo "✓ Compilation terminée!"
 
 # Compiler chaque fichier .cpp en .o
 %.o: %.cpp
-    $(CXX) $(FLAGS) -c $< -o $@
+	$(CXX) $(FLAGS) -c $< -o $@
 
 # ==========================================
 # EXÉCUTION
@@ -48,11 +44,11 @@ $(EXEC): $(OBJETS)
 
 # Lancer le programme normalement
 run: $(EXEC)
-    ./$(EXEC)
+	./$(EXEC)
 
 # Lancer avec Valgrind
 valgrind: $(EXEC)
-    valgrind --leak-check=full --show-leak-kinds=all ./$(EXEC)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(EXEC)
 
 # ==========================================
 # NETTOYAGE
@@ -60,13 +56,13 @@ valgrind: $(EXEC)
 
 # Supprimer les fichiers compilés
 clean:
-    rm -f $(OBJETS)
-    @echo "✓ Fichiers .o supprimés"
+	rm -f $(OBJETS)
+	@echo "✓ Fichiers .o supprimés"
 
 # Tout supprimer
 fclean: clean
-    rm -f $(EXEC)
-    @echo "✓ Programme supprimé"
+	rm -f $(EXEC)
+	@echo "✓ Programme supprimé"
 
 # Recompiler tout
 re: fclean all
