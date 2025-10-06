@@ -87,7 +87,6 @@ public:
     // Rien
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Collection& operator=(const Collection& uneCollection);
 
 //-------------------------------------------- Constructeurs - destructeur
     Collection ( const Collection & uneCollection );
@@ -114,12 +113,12 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    bool compare ( const Trajet* t1, const Trajet* t2 ) const;
+   /* bool compare ( const Trajet* t1, const Trajet* t2 ) const;
     // Mode d'emploi :
     // Compare les trajets pointés par t1 et t2 par ordre alphabétique sur
     // leurs noms de villes de départ, puis d'arrivée.
     // Contrat :
-    // t1 et t2 pointent bien vers des Trajets valides
+    // t1 et t2 pointent bien vers des Trajets valides*/
 
 //----------------------------------------------------- Attributs protégés
     Cellule *racine;

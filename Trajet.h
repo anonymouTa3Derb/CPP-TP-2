@@ -1,5 +1,6 @@
 /*************************************************************************
-                              Trajet  -  description
+                              Trajet
+                              -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $ANNEE$ par $AUTEUR$
@@ -37,23 +38,23 @@ public:
     // Contrat :
     //
 
-    virtual const char* GetDepart ( ) const = 0;
+    virtual const char* RecupDepart ( ) const = 0;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual const char* GetArrivee ( ) const = 0;
+    virtual const char* RecupArrivee ( ) const = 0;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual Trajet* Clone ( ) const = 0;
+    /*virtual Trajet* Clone ( ) const = 0;
     // Mode d'emploi :
     //
     // Contrat :
-    //
+    //*/
 
 //------------------------------------------------- Surcharge d'opérateurs
 
