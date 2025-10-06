@@ -8,61 +8,77 @@ EXEC = programme
 # Compilateur C++
 CXX = g++
 
-# Options de compilation
-FLAGS = -Wall -Wextra -std=c++11 -g
+# Options de compilation (ajout de -I. pour inclure les headers locaux)
+FLAGS = -Wall -Wextra -std=c++11 -g -I.
 
 # ==========================================
 # VOS FICHIERS
 # ==========================================
 
 # Listez tous vos fichiers .cpp
-FICHIERS = main.cpp \
-           Collection.cpp \
-           Trajet.cpp
+SRC = main.cpp \
+      Collection.cpp \
+      Trajet.cpp
+
+# Fichiers .h associés (pour les dépendances)
+HEADERS = Collection.h \
+	Trajet.h
+
 # Les fichiers .o (générés automatiquement)
-OBJETS = $(FICHIERS:.cpp=.o)
+OBJ = $(SRC:.cpp=.o)
 
 # ==========================================
 # COMMANDES PRINCIPALES
 # ==========================================
 
-# Compiler le projet
+# Cible par défaut : compiler le projet
 all: $(EXEC)
 
-# Créer l'exécutable
-$(EXEC): $(OBJETS)
-	$(CXX) $(OBJETS) -o $(EXEC)
-	@echo "✓ Compilation terminée!"
+# Créer l'exécutable (dépend des .o ET des .h)
+$(EXEC): $(OBJ) $(HEADERS)
+	$(CXX) $(OBJ) -o $(EXEC)
+	@echo "✅ Compilation terminée: $(EXEC) est prêt!"
 
-# Compiler chaque fichier .cpp en .o
-%.o: %.cpp
+# Règle pour générer les .o (avec dépendance vers les .h)
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(FLAGS) -c $< -o $@
 
 # ==========================================
 # EXÉCUTION
 # ==========================================
 
-# Lancer le programme normalement
+# Lancer le programme (dépend de l'exécutable)
 run: $(EXEC)
 	./$(EXEC)
 
-# Lancer avec Valgrind
+# Lancer avec Valgrind (outils de détection de fuites mémoire)
 valgrind: $(EXEC)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(EXEC)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(EXEC)
 
 # ==========================================
 # NETTOYAGE
 # ==========================================
 
-# Supprimer les fichiers compilés
+# Supprimer les fichiers .o
 clean:
-	rm -f $(OBJETS)
-	@echo "✓ Fichiers .o supprimés"
+	rm -f $(OBJ)
+	@echo "✅ Fichiers .o supprimés"
 
-# Tout supprimer
+# Supprimer l'exécutable + les .o
 fclean: clean
 	rm -f $(EXEC)
-	@echo "✓ Programme supprimé"
+	@echo "✅ Programme et fichiers .o supprimés"
 
-# Recompiler tout
+# Recompiler entièrement
 re: fclean all
+
+# Afficher l'aide
+help:
+	@echo "Cibles disponibles:"
+	@echo "  make        - Compiler le projet (défaut)"
+	@echo "  make run    - Compiler et exécuter"
+	@echo "  make valgrind - Lancer avec Valgrind"
+	@echo "  make clean  - Nettoyer les .o"
+	@echo "  make fclean - Nettoyer tout"
+	@echo "  make re     - Tout recompiler"
+	@echo "  make help   - Afficher cette aide"
