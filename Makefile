@@ -15,10 +15,10 @@ FLAGS = -Wall -Wextra -std=c++11 -g
 # VOS FICHIERS
 # ==========================================
 
-# Listez tous vos fichiers .cpp (ADAPTEZ ICI!)
+# Listez tous vos fichiers .cpp
 FICHIERS = main.cpp \
            Collection.cpp \
-           Trajet.cpp 
+           Trajet.cpp
 # Les fichiers .o (générés automatiquement)
 OBJETS = $(FICHIERS:.cpp=.o)
 
