@@ -1,5 +1,5 @@
 /*************************************************************************
-Xxx  -  description
+Trajet  -  description
                              -------------------
     début                : 2025
     copyright            : (C) 3IFA par $AUTEUR$

@@ -1,5 +1,5 @@
 /*************************************************************************
-                              Xxx  -  description
+                              Trajet  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $ANNEE$ par $AUTEUR$
